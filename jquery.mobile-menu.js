@@ -53,8 +53,8 @@ var mobileApp = mobileApp || {};
       _this.config = $.extend({}, _this.defaults, _this.options);
       // GET MENU AND BUILD MOBILE NAV
       if(_this.config.menu){
-        $(_this.config.menu).clone().attr('id',_this.config.menu_id).prependTo("#build-menu");
-        $(_this.config.menu).hide();
+        $("#"+_this.config.menu).clone().attr('id',_this.config.menu_id).prependTo("#build-menu");
+        $("#"+_this.config.menu).hide();
       } else {
         return false;
       }

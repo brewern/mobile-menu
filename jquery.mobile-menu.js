@@ -3,7 +3,7 @@
  * Creates a side nav bar that mimics the native IOS nav slide drawer
  *
  * Author: Nick Brewer
- * Version: 0.1
+ * Version: 0.2
  *
  * REQUIRES: jQuery
  * RECOMMENDATION: Use jQuery.Animate-Enhanced for CSS3 animate properties

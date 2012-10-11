@@ -21,7 +21,7 @@ var mobileApp = mobileApp || {};
   MobileMenu.prototype = {
     defaults: {
       page_id: 'build-menu-page',
-      menu: '',
+      menu: '', // set as an array for multiple menus
       menu_width: 260,
       menu_id: "mobile-nav",
       button_content: 'MENU',
@@ -43,7 +43,7 @@ var mobileApp = mobileApp || {};
     },
 
     /*
-     * Clone site navigation and set it as mobile nav, change ID for unique styling.
+     * Clone site navigation and set it as mobile nav, set Class on each new menu
      *
      * @return false if no menu option is provided
      */
@@ -51,10 +51,21 @@ var mobileApp = mobileApp || {};
     buildMenu: function(){
 			var _this = this;
       _this.config = $.extend({}, _this.defaults, _this.options);
+      var menu = _this.config.menu,
+          mobile_menu = $("#build-menu"),
+          menu_collection = [];
+
       // GET MENU AND BUILD MOBILE NAV
-      if(_this.config.menu){
-        $("#"+_this.config.menu).clone().attr('id',_this.config.menu_id).prependTo("#build-menu");
-        $("#"+_this.config.menu).hide();
+      if(menu){
+        if($.isArray(menu)){
+          $.each(menu, function(i){
+            mobile_menu.append($("#"+this).clone().find("ul").addClass(_this.config.menu_id+"-"+i).parent().html());
+            $("#"+this).hide();
+          });
+        } else {
+          $("#"+menu).clone().addClass(_this.config.menu_id+"-0").removeAttr("id").prependTo(mobile_menu);
+          $("#"+menu).hide();
+        }
       } else {
         return false;
       }
@@ -75,7 +86,7 @@ var mobileApp = mobileApp || {};
         bottom: 0,
         right: 0,
         left: 0,
-        "z-index": 9999,
+        "z-index": 99,
         background: "#000",
         opacity: 0.5,
         display: "none"
@@ -88,7 +99,8 @@ var mobileApp = mobileApp || {};
         display: "block",
         padding: 0,
         position: "fixed",
-        "z-index": 0
+        "z-index": 0,
+        height: "100%"
       });
 
       $("<style />").appendTo("head").html('#'+_this.config.page_id+' { position: relative; min-height: 100% }');

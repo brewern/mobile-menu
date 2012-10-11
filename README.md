@@ -1,4 +1,4 @@
-mobile-menu
+jQuery Mobile Menu Plugin
 ===========
 
 Basic Usage:

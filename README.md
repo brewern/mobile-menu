@@ -2,10 +2,12 @@ mobile-menu
 ===========
 
 Basic Usage:
+------------
 
 `$("body").mobile_menu({ menu: 'main-nav' });`
 
 Required Settings:
+------------------
 
 menu: Target the menu you would like to convert to mobile. This option supports multiple menus by using an array rather than string.
 
@@ -15,6 +17,8 @@ menu: Target the menu you would like to convert to mobile. This option supports 
       prepend_button_to: ''
 
 Optional Settings:
+------------------
+
 page_id: Sets the ID of the div that will wrap your sites content. Defaults to 'build-menu-page'
 
 menu_width: Width of the mobile menu

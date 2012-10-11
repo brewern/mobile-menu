@@ -1,6 +1,8 @@
 jQuery Mobile Menu Plugin
 ===========
 
+Creates drawer-style navigation on your mobile site, as seen on iOS.
+
 Basic Usage:
 ------------
 

@@ -58,13 +58,13 @@ var mobileApp = mobileApp || {};
       // GET MENU AND BUILD MOBILE NAV
       if(menu){
         if($.isArray(menu)){
-          $.each(menu, function(i){
-            mobile_menu.append($("#"+this).clone().find("ul").addClass(_this.config.menu_id+"-"+i).parent().html());
-            $("#"+this).hide();
+          $(menu).each(function(i, e){
+            mobile_menu.append($(e).clone().addClass(_this.config.menu_id+"-"+i));
+            $(e).hide();
           });
         } else {
-          $("#"+menu).clone().addClass(_this.config.menu_id+"-0").removeAttr("id").prependTo(mobile_menu);
-          $("#"+menu).hide();
+          mobile_menu.append($(menu).clone().addClass(_this.config.menu_id+"-0").removeAttr("id"));
+          $(menu).hide();
         }
       } else {
         return false;

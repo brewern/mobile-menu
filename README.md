@@ -13,11 +13,6 @@ Required Settings:
 
 menu: Target the menu you would like to convert to mobile. This option supports multiple menus by using an array rather than string.
 
-      menu_width: 260,
-      menu_id: "mobile-nav",
-      button_content: 'MENU',
-      prepend_button_to: ''
-
 Optional Settings:
 ------------------
 

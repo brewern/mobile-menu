@@ -2,9 +2,11 @@ mobile-menu
 ===========
 
 Basic Usage:
+
 `$("body").mobile_menu({ menu: 'main-nav' });`
 
 Required Settings:
+
 menu: Target the menu you would like to convert to mobile. This option supports multiple menus by using an array rather than string.
 
       menu_width: 260,

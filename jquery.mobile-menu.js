@@ -3,10 +3,9 @@
  * Creates a side nav bar that mimics the native IOS nav slide drawer
  *
  * Author: Nick Brewer
- * Version: 0.2
+ * Version: 0.3
  *
  * REQUIRES: jQuery
- * RECOMMENDATION: Use jQuery.Animate-Enhanced for CSS3 animate properties
  */
 
 var mobileApp = mobileApp || {};
@@ -25,7 +24,8 @@ var mobileApp = mobileApp || {};
       menu_width: 260,
       menu_id: "mobile-nav",
       button_content: 'MENU',
-      prepend_button_to: ''
+      prepend_button_to: '',
+      menu_bar: ''
     },
 
     /*
@@ -49,7 +49,7 @@ var mobileApp = mobileApp || {};
      */
 
     buildMenu: function(){
-			var _this = this;
+      var _this = this;
       _this.config = $.extend({}, _this.defaults, _this.options);
       var menu = _this.config.menu,
           mobile_menu = $("#build-menu"),
@@ -100,8 +100,16 @@ var mobileApp = mobileApp || {};
         padding: 0,
         position: "fixed",
         "z-index": 0,
-        height: "100%"
+        top: 0,
+        height: "100%",
+        "overflow-y": "auto"
       });
+
+      if(_this.config.menu_bar){
+        $(_this.config.menu_bar).css({
+          position: "fixed"
+        });
+      }
 
       $("<style />").appendTo("head").html('#'+_this.config.page_id+' { position: relative; min-height: 100% }');
       $("style").append('html.build-menu-open #'+_this.config.page_id+' { position: fixed; overflow: hidden; width: 100%; left: 0; top: 0; bottom: 0 }');
@@ -113,7 +121,7 @@ var mobileApp = mobileApp || {};
      * @return void
      */
     setLayout: function(){
-			var _this = this;
+      var _this = this;
       _this.config = $.extend({}, _this.defaults, _this.options);
 
       // If prepend_button_to is not set to something custom, then just prepend to the page setting
@@ -133,32 +141,45 @@ var mobileApp = mobileApp || {};
 
       // EVENT HANDLER FOR MENU BUTTON
       $("#build-menu-button, #build-menu-overlay").on("click", function(e){
-      	e.preventDefault();
+        e.preventDefault();
         var html = $("html");
         var page = $("#"+_this.config.page_id);
         var overlay = $("#build-menu-overlay");
 
-      	if(html.hasClass("build-menu-open")){
-      		html.removeClass("build-menu-open");
-      		html.addClass("build-menu-close");
-
-      		page.animate({
-						left: "-="+_this.config.menu_width+"px"
-					}, "slow");
+        if(html.hasClass("build-menu-open")){
+          html.removeClass("build-menu-open");
+          html.addClass("build-menu-close");
+          page.animate({
+            left: "-="+_this.config.menu_width+"px"
+          },
+          {
+            step: function(now, fx){
+              if(_this.config.menu_bar){
+                $(_this.config.menu_bar).css("left", now);
+              }
+            }
+          });
 
           overlay.fadeTo("slow",0, function(){
             $(this).css("visibility", "hidden");
           });
-      	} else {
-      		html.addClass("build-menu-open");
-      		html.removeClass("build-menu-close");
+        } else {
+          html.addClass("build-menu-open");
+          html.removeClass("build-menu-close");
 
-					page.animate({
-						left: "+="+_this.config.menu_width+"px"
-					}, "slow");
+          page.animate({
+            left: "+="+_this.config.menu_width+"px"
+          },
+          {
+            step: function(now, fx){
+              if(_this.config.menu_bar){
+                $(_this.config.menu_bar).css("left", now);
+              }
+            }
+          });
 
           overlay.css("visibility", "visible").fadeTo("slow",0.5);
-      	}
+        }
       });
     }
   };

@@ -1,0 +1,49 @@
+#build-menu-page {
+  left: 0;
+  position: relative;
+}
+
+#build-menu {
+	visibility: visible;
+	z-index: 0;
+	opacity: 1;
+	-webkit-transform: none;
+	display: none;
+	width: 260px;
+  padding: 0;
+  position: static;
+  z-index: 0;
+  top: 0;
+  height: 100%;
+  overflow-y: auto;
+  left: 0;
+}
+
+.build-menu-animating #build-menu-page {
+	position: fixed;
+	overflow: hidden;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+}
+
+.build-menu-animating.build-menu-close #build-menu-page,
+.build-menu-animating.build-menu-open #build-menu-page {
+	-webkit-transition: -webkit-transform 250ms;
+}
+
+.build-menu-animating.build-menu-open #build-menu-page {
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.build-menu-animating #build-menu { display: block }
+
+.build-menu-open #build-menu {
+	display: block;
+	-webkit-transition-delay: 0ms, 0ms, 0ms;
+}
+
+.build-menu-open #build-menu,
+.build-menu-close #build-menu {
+	-webkit-transition: -webkit-transform 250ms, opacity 250ms, visibility 0ms 250ms;
+}

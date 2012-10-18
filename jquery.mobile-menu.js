@@ -3,7 +3,7 @@
  * Creates a side nav bar that mimics the native IOS nav slide drawer
  *
  * Author: Nick Brewer
- * Version: 0.3
+ * Version: 0.4
  *
  * REQUIRES: jQuery
  */
@@ -94,25 +94,14 @@ var mobileApp = mobileApp || {};
 
       $("html,body").css("height","100%");
 
-      $("#build-menu").css({
-        width: _this.config.menu_width+"px",
-        display: "block",
-        padding: 0,
-        position: "fixed",
-        "z-index": 0,
-        top: 0,
-        height: "100%",
-        "overflow-y": "auto"
-      });
-
       if(_this.config.menu_bar){
         $(_this.config.menu_bar).css({
           position: "fixed"
         });
       }
 
-      $("<style />").appendTo("head").html('#'+_this.config.page_id+' { position: relative; min-height: 100% }');
-      $("style").append('html.build-menu-open #'+_this.config.page_id+' { position: fixed; overflow: hidden; width: 100%; left: 0; top: 0; bottom: 0 }');
+      //$("<style />").appendTo("head").html('#'+_this.config.page_id+' { position: relative; min-height: 100% }');
+      //$("style").append('html.build-menu-open #'+_this.config.page_id+' { position: fixed; overflow: hidden; width: 100%; left: 0; top: 0; bottom: 0 }');
     },
 
     /*
@@ -139,6 +128,18 @@ var mobileApp = mobileApp || {};
       this.buildMenu();
       this.setCSS();
 
+      var element = document.getElementById(_this.config.page_id);
+      element.addEventListener("oTransitionEnd", remove_animation_class,false);
+      element.addEventListener("transitionend", remove_animation_class,false);
+      element.addEventListener("webkitTransitionEnd", remove_animation_class,false);
+      element.addEventListener("MSTransitionEnd", remove_animation_class,false);
+
+      function remove_animation_class(){
+        if($("html").hasClass("build-menu-close")){
+          $("html").removeClass("build-menu-animating");
+        }
+      }
+
       // EVENT HANDLER FOR MENU BUTTON
       $("#build-menu-button, #build-menu-overlay").on("click", function(e){
         e.preventDefault();
@@ -146,18 +147,14 @@ var mobileApp = mobileApp || {};
         var page = $("#"+_this.config.page_id);
         var overlay = $("#build-menu-overlay");
 
+        html.addClass("build-menu-animating");
+
         if(html.hasClass("build-menu-open")){
           html.removeClass("build-menu-open");
           html.addClass("build-menu-close");
-          page.animate({
-            left: "-="+_this.config.menu_width+"px"
-          },
-          {
-            step: function(now, fx){
-              if(_this.config.menu_bar){
-                $(_this.config.menu_bar).css("left", now);
-              }
-            }
+
+          page.css({
+            "-webkit-transform": "translateX(0px)"
           });
 
           overlay.fadeTo("slow",0, function(){
@@ -167,15 +164,8 @@ var mobileApp = mobileApp || {};
           html.addClass("build-menu-open");
           html.removeClass("build-menu-close");
 
-          page.animate({
-            left: "+="+_this.config.menu_width+"px"
-          },
-          {
-            step: function(now, fx){
-              if(_this.config.menu_bar){
-                $(_this.config.menu_bar).css("left", now);
-              }
-            }
+          page.css({
+            "-webkit-transform": "translateX("+_this.config.menu_width+"px"+")"
           });
 
           overlay.css("visibility", "visible").fadeTo("slow",0.5);

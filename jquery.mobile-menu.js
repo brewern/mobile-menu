@@ -3,7 +3,7 @@
  * Creates a side nav bar that mimics the native IOS nav slide drawer
  *
  * Author: Nick Brewer
- * Version: 0.4
+ * Version: 0.5
  *
  * REQUIRES: jQuery
  */
@@ -37,7 +37,9 @@ var mobileApp = mobileApp || {};
       var _this = this;
       _this.config = $.extend({}, _this.defaults, _this.options);
 
-      this.setLayout();
+      if($(_this.config.menu_id).length == 0){
+        this.setLayout();
+      }
 
       return _this;
     },

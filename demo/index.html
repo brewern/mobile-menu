@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="APP TITLE">
+        
+		<link rel="stylesheet" href="normalize.css">
+		<link rel="stylesheet" href="styles.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="../jquery.mobile-menu.js"></script>
+		<script>
+			$(function(){
+				$("body").mobile_menu({
+					menu: ['#main-nav ul', '#secondary-nav ul'],
+      		menu_width: 200,
+      		prepend_button_to: '#mobile-bar'
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<header>
+			<nav id="mobile-bar"></nav>
+			
+			<nav id="main-nav">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Nav 2</a></li>
+					<li><a href="#">Nav 3</a></li>
+					<li><a href="#">Nav 4</a></li>
+					<li><a href="#">Nav 5</a></li>
+					<li><a href="#">Nav 6</a></li>
+				</ul>
+			</nav>
+			
+			<nav id="secondary-nav">
+				<ul>
+					<li><a href="#">Secondary Nav 1</a></li>
+					<li><a href="#">Secondary Nav 2</a></li>
+					<li><a href="#">Secondary Nav 3</a></li>
+					<li><a href="#">Secondary Nav 4</a></li>
+					<li><a href="#">Secondary Nav 5</a></li>
+					<li><a href="#">Secondary Nav 6</a></li>
+				</ul>
+			</nav>
+			<h1>HEADER</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis velit eaque earum beatae assumenda doloribus debitis. Soluta voluptatum natus architecto possimus excepturi debitis expedita magnam nemo delectus et exercitationem ipsa.</p>
+		</header>
+		<section>
+			<h2>CONTENT</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis velit eaque earum beatae assumenda doloribus debitis. Soluta voluptatum natus architecto possimus excepturi debitis expedita magnam nemo delectus et exercitationem ipsa.</p>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis velit eaque earum beatae assumenda doloribus debitis. Soluta voluptatum natus architecto possimus excepturi debitis expedita magnam nemo delectus et exercitationem ipsa.</p>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis velit eaque earum beatae assumenda doloribus debitis. Soluta voluptatum natus architecto possimus excepturi debitis expedita magnam nemo delectus et exercitationem ipsa.</p>
+		</section>
+		
+		<footer>
+			<h1>FOOTER</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis velit eaque earum beatae assumenda doloribus debitis. Soluta voluptatum natus architecto possimus excepturi debitis expedita magnam nemo delectus et exercitationem ipsa.</p>
+		</footer>
+	</body>
+</html>

@@ -37,7 +37,7 @@ var mobileApp = mobileApp || {};
       var _this = this;
       _this.config = $.extend({}, _this.defaults, _this.options);
 
-      if($(_this.config.menu_id).length == 0){
+      if($(_this.config.menu_id).length === 0){
         this.setLayout();
       }
 
@@ -113,7 +113,7 @@ var mobileApp = mobileApp || {};
      */
     setLayout: function(){
       var _this = this;
-      _this.config = $.extend({}, _this.defaults, _this.options);
+          _this.config = $.extend({}, _this.defaults, _this.options);
 
       // If prepend_button_to is not set to something custom, then just prepend to the page setting
       if(_this.config.prepend_button_to == ''){
@@ -156,7 +156,11 @@ var mobileApp = mobileApp || {};
           html.addClass("build-menu-close");
 
           page.css({
-            "-webkit-transform": "translateX(0px)"
+            "-webkit-transform": "translateX(0px)",
+            "-moz-transform": "translateX(0px)",
+            "-o-transform": "translateX(0px)",
+            "-ms-transform": "translateX(0px)",
+            "transform": "translateX(0px)"
           });
 
           overlay.fadeTo("slow",0, function(){
@@ -167,7 +171,11 @@ var mobileApp = mobileApp || {};
           html.removeClass("build-menu-close");
 
           page.css({
-            "-webkit-transform": "translateX("+_this.config.menu_width+"px"+")"
+            "-webkit-transform": "translateX("+_this.config.menu_width+"px"+")",
+            "-moz-transform": "translateX("+_this.config.menu_width+"px"+")",
+            "-o-transform": "translateX("+_this.config.menu_width+"px"+")",
+            "-ms-transform": "translateX("+_this.config.menu_width+"px"+")",
+            "transform": "translateX("+_this.config.menu_width+"px"+")"
           });
 
           overlay.css("visibility", "visible").fadeTo("slow",0.5);

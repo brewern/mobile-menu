@@ -1,6 +1,7 @@
 #build-menu-page {
   left: 0;
   position: relative;
+  background-color:#eee;
 }
 
 #build-menu {
@@ -8,15 +9,74 @@
 	z-index: 0;
 	opacity: 1;
 	-webkit-transform: none;
+	-moz-transform: none;
+	-o-transform: none;
+	-ms-transform: none;
+	transform: none;
 	display: none;
 	width: 260px;
   padding: 0;
-  position: static;
+  position: relative;
   z-index: 0;
   top: 0;
   height: 100%;
   overflow-y: auto;
   left: 0;
+  font-size: 16px !important;
+  -webkit-overflow-scrolling: touch;
+  
+  background-color: #333333;
+  color: #cbcbcb;
+  font-family: "Helvetica Neue", Arial, sans-serif !important;
+  font-weight:bold;
+}
+
+#build-menu > ul > li a {
+	color: #ccc;
+	text-decoration: none;
+	display:block;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding:10px;
+	font-family: "Helvetica Neue", Arial, sans-serif !important;
+	font-size: 16px !important;
+}
+
+#build-menu ul ul {
+	display: none;
+}
+
+#build-menu > ul > li a:active {
+	color: #eee;
+}
+
+#build-menu ul {
+	width: 240px;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+#build-menu ul ul li{
+	font-size: 11px !important;
+	font-weight: bold;
+	background: #2c2c2c;
+	text-transform: uppercase;
+	padding: 10px 10px 5px 20px;
+	font-family: "Helvetica Neue", Arial, sans-serif !important;
+}
+
+#build-menu ul ul li a{
+	text-transform: none;
+	font-size:14px !important;
+	padding: 0px !important;
+	font-weight: normal;
+    font-family: "Helvetica Neue", Arial, sans-serif !important;
+}
+
+.highlighted {
+	color: #0099cc !important;
 }
 
 .build-menu-animating #build-menu-page {
@@ -30,10 +90,18 @@
 .build-menu-animating.build-menu-close #build-menu-page,
 .build-menu-animating.build-menu-open #build-menu-page {
 	-webkit-transition: -webkit-transform 250ms;
+	-moz-transition: -moz-transform 250ms;
+	-o-transition: -o-transform 250ms;
+	-ms-transition: -ms-transform 250ms;
+	transition: transform 250ms;
 }
 
 .build-menu-animating.build-menu-open #build-menu-page {
 	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }
 
 .build-menu-animating #build-menu { display: block }
@@ -41,9 +109,30 @@
 .build-menu-open #build-menu {
 	display: block;
 	-webkit-transition-delay: 0ms, 0ms, 0ms;
+	-moz-transition-delay: 0ms, 0ms, 0ms;
+	-o-transition-delay: 0ms, 0ms, 0ms;
+	-ms-transition-delay: 0ms, 0ms, 0ms;
+	transition-delay: 0ms, 0ms, 0ms;
 }
 
 .build-menu-open #build-menu,
 .build-menu-close #build-menu {
 	-webkit-transition: -webkit-transform 250ms, opacity 250ms, visibility 0ms 250ms;
+	-moz-transition: -moz-transform 250ms, opacity 250ms, visibility 0ms 250ms;
+	-o-transition: -o-transform 250ms, opacity 250ms, visibility 0ms 250ms;
+	-ms-transition: -ms-transform 250ms, opacity 250ms, visibility 0ms 250ms;
+	transition: transform 250ms, opacity 250ms, visibility 0ms 250ms;
+}
+
+
+.navigation_heading {
+	color: #fff;
+	position: fixed;
+	width: 100%;
+	background: #333;
+	border-bottom: 1px solid #222;
+	padding:10px;
+	font-size:1.2em !important;
+	font-family: "Helvetica Neue", Arial, sans-serif !important;
+
 }

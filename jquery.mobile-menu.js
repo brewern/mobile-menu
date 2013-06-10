@@ -156,11 +156,11 @@ var mobileApp = mobileApp || {};
           html.addClass("build-menu-close");
 
           page.css({
-            "-webkit-transform": "translateX(0px)",
-            "-moz-transform": "translateX(0px)",
-            "-o-transform": "translateX(0px)",
-            "-ms-transform": "translateX(0px)",
-            "transform": "translateX(0px)"
+            "-webkit-transform": "",
+            "-moz-transform": "",
+            "-o-transform": "",
+            "-ms-transform": "",
+            "transform": ""
           });
 
           overlay.fadeTo("slow",0, function(){

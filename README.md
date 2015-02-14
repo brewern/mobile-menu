@@ -1,3 +1,7 @@
+Deprecated:
+===========
+There are much better plugins out there now that do this. I recommend MMenu http://mmenu.frebsite.nl/
+
 jQuery Mobile Menu Plugin
 ===========
 
